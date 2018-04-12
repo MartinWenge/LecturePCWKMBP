@@ -1,0 +1,7 @@
+# ignore all the large pdf bookfiles
+material/
+
+# ignore some .zip files whereever they are
+*.zip
+*/*.zip
+*/*/*.zip
