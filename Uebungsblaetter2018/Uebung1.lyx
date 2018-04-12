@@ -1,0 +1,250 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage[ngerman]{babel}
+\usepackage{babel}
+\end_preamble
+\options journal=mamobx,manuscript=article,maxauthors=15,biblabel=plain
+\use_default_options false
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding iso8859-1
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\headheight 0.5cm
+\headsep 0.5cm
+\footskip 0.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Übung 1
+\end_layout
+
+\begin_layout Subsection*
+Zufallszahlen
+\end_layout
+
+\begin_layout Standard
+Für die folgenden Aufgaben verwenden Sie den Pseudo-Zufallszahlengenerator
+ aus der Vorlesung (linearer Kongruenzgenerator).
+ 
+\begin_inset Formula 
+\begin{align*}
+z_{i+1}=(az_{i}+b)\mod(m)
+\end{align*}
+
+\end_inset
+
+Schreiben Sie eine Klasse, mit der Sie in einem einfachen 
+\lang english
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+C
+\backslash
+texttt{++}
+\end_layout
+
+\end_inset
+
+
+\lang ngerman
+ oder Python Programm folgende Aufgaben erledigen können: 
+\end_layout
+
+\begin_layout Enumerate
+Bestimmen Sie die Periodenlänge des Pseudo-Zufallszahlengenerators für Werte
+ von 
+\begin_inset Formula $a$
+\end_inset
+
+, 
+\begin_inset Formula $b$
+\end_inset
+
+ und 
+\begin_inset Formula $m\in[0,100]$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Enumerate
+Variieren Sie 
+\begin_inset Formula $a$
+\end_inset
+
+, 
+\begin_inset Formula $b$
+\end_inset
+
+ und 
+\begin_inset Formula $m$
+\end_inset
+
+ in geeigneter Weise und bestimmen Sie erneut die Periodenlänge.
+ Was beobachten Sie? Legen Sie optimale Werte für die Parameter als Standartwert
+e fest (Satz von Knuth).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Betrachten Sie die niedrigsten Bits der Pseudo-Zufallszahlen.
+ Was beobachten Sie? 
+\end_layout
+
+\begin_layout Enumerate
+Normieren Sie die Zufallszahlen auf das Intervall 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+.
+ Überlegen Sie, wie Sie die Korrelation zweier normierter Zufallszahlen
+ als Funktion der Rechenschritte zwischen den Zufallszahlen mathematisch
+ oder graphisch analysieren könnten und diskutieren Sie ihr Ergebnis/Analyse.
+ 
+\end_layout
+
+\begin_layout Standard
+Eine leere Vorlage der Klassen finden Sie im Übungsmaterial.
+\end_layout
+
+\begin_layout Subsection*
+Monte-Carlo Integration
+\end_layout
+
+\begin_layout Enumerate
+Verwenden Sie Zufallszahlen um die Kreiszahl 
+\begin_inset Formula $\pi$
+\end_inset
+
+ zu berechnen.
+ Betrachten Sie ihre Analyse als Zufallsexperiment und schätzen Sie den
+ Fehler ihrer Auswertung ab.
+ Mit welcher maximalen Genauigkeit können Sie die Kreiszahl 
+\begin_inset Formula $\pi$
+\end_inset
+
+ berechnen? 
+\end_layout
+
+\begin_layout Enumerate
+Betrachten Sie die Funktion 
+\begin_inset Formula $f(x,y)=x^{2}-y^{3}+xy^{2}$
+\end_inset
+
+.
+ Berechnen Sie das Volumen, das von dieser Funktion und der 
+\begin_inset Formula $xy$
+\end_inset
+
+-Ebene für Koordinaten aus den Intervallen 
+\begin_inset Formula $x\in[-1,1]$
+\end_inset
+
+, 
+\begin_inset Formula $y\in[-1,1]$
+\end_inset
+
+ eingeschlossen wird.
+ Wie genau ist ihr Ergebnis?
+\end_layout
+
+\begin_layout Enumerate
+Beurteilen Sie die Effizienz dieses Integrations-Verfahrens im Vergleich
+ zu einer gleichmäßigen Rasterung des Raumes.
+ Was sind die Vor- bzw.
+ Nachteile der Monte-Carlo Integration (hochdimensionaler Phasenraum, periodisch
+e Funktionen, ...)? 
+\end_layout
+
+\begin_layout Subsection*
+Nützliche Links
+\end_layout
+
+\begin_layout Standard
+http://www.cplusplus.com/doc/tutorial/
+\end_layout
+
+\begin_layout Standard
+http://www.codeproject.com/Articles/257589/An-Idiots-Guide-to-Cplusplus-Templates-
+Part
+\end_layout
+
+\begin_layout Standard
+http://www.cs.utah.edu/~edwards/research/mcIntegration.pdf
+\end_layout
+
+\end_body
+\end_document

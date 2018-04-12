@@ -8,3 +8,7 @@ material/
 
 # pycache
 */*/__pycache__
+
+# lyx
+Uebungsblaetter2018/#*.lyx#
+Uebungsblaetter2018/*~
