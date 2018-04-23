@@ -2,13 +2,20 @@
 material/
 
 # ignore some .zip files whereever they are
-*.zip
-*/*.zip
-*/*/*.zip
+**.zip
 
 # pycache
 */*/__pycache__
 
+# jupyter ntoebooks
+**/.ipynb_checkpoints/
+
 # lyx
 Uebungsblaetter2018/#*.lyx#
 Uebungsblaetter2018/*~
+
+# cmake
+**/build/
+
+# vs code
+**/.vscode/
