@@ -1,0 +1,268 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage[ngerman]{babel}
+\usepackage{babel}
+\end_preamble
+\options journal=mamobx,manuscript=article,maxauthors=15,biblabel=plain
+\use_default_options false
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding iso8859-1
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\headheight 0.5cm
+\headsep 0.5cm
+\footskip 0.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Übung 2
+\end_layout
+
+\begin_layout Subsection*
+Das Ising Modell
+\end_layout
+
+\begin_layout Standard
+Ihnen wird die Klasse IsingSimulator zur Verfügung gestellt, mit der Sie
+ zufällige Spin-Konformationen 
+\begin_inset Formula $\pm1$
+\end_inset
+
+ auf einem zweidmensionalen Gitter der Größe 
+\begin_inset Formula $L\times L$
+\end_inset
+
+ erstellen können.
+ Sie ist noch nicht vollständig.
+\end_layout
+
+\begin_layout Enumerate
+Implementieren Sie die Funktion zur Berechnung der Magnetisierung 
+\begin_inset Formula $M.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Implementieren Sie die Funktion zur Berechnung der Gesamtenergie 
+\begin_inset Formula $E$
+\end_inset
+
+.
+ Beachten Sie periodische Randbedingungen.
+\end_layout
+
+\begin_layout Subsubsection*
+Simple Sampling
+\end_layout
+
+\begin_layout Enumerate
+Nutzen Sie die Klasse, um eine große Anzahl an unabhängigen Konformationen
+ (etwa 
+\begin_inset Formula $10^{6}$
+\end_inset
+
+) zu erzeugen.
+ Wir betrachten die Fälle 
+\begin_inset Formula $B=0$
+\end_inset
+
+ und 
+\begin_inset Formula $B=1$
+\end_inset
+
+ auf einem Gitter 
+\begin_inset Formula $L=20$
+\end_inset
+
+.
+ Zur Vereinfachung setzen wir 
+\begin_inset Formula $J=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:Ermitteln-Sie-"
+
+\end_inset
+
+Ermitteln Sie 
+\begin_inset Formula $\left\langle M\right\rangle ,$
+\end_inset
+
+ 
+\begin_inset Formula $\left\langle E\right\rangle $
+\end_inset
+
+ und 
+\begin_inset Formula $C$
+\end_inset
+
+ (aus den Fluktuationen von 
+\begin_inset Formula $E$
+\end_inset
+
+) als Funktion von 
+\begin_inset Formula $T$
+\end_inset
+
+ aus diesen Konformationen und variieren Sie 
+\begin_inset Formula $T$
+\end_inset
+
+ dahingehend, dass Sie den Datenbereich 
+\begin_inset Formula $T>T_{c}$
+\end_inset
+
+ und 
+\begin_inset Formula $T\rightarrow0$
+\end_inset
+
+ abdecken.
+ Tragen Sie ihre Ergebnisse für 
+\begin_inset Formula $B=0$
+\end_inset
+
+ und 
+\begin_inset Formula $B=1$
+\end_inset
+
+ geeignet auf und vergleichen Sie mit den verschiedenen Ergebnissen aus
+ der Vorlesung - soweit möglich.
+ Was beobachten Sie? 
+\end_layout
+
+\begin_layout Subsubsection*
+Importance Sampling
+\end_layout
+
+\begin_layout Enumerate
+Erweitern Sie das Programm um den Metropolis Algorithmus.
+ Vervollständigen Sie dazu die Funktion performMCS(...).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Wir betrachten zunächst den Fall 
+\begin_inset Formula $B=0$
+\end_inset
+
+.
+ Beginnen Sie mit einer zufällig erstellten Konformation und equilibrieren
+ Sie das System mit Hilfe von Metropolis.
+ Ermitteln Sie die Magnetisierung 
+\begin_inset Formula $M$
+\end_inset
+
+ als Funktion der Simulationsdauer 
+\begin_inset Formula $t$
+\end_inset
+
+ für 100 unabhängige Startkonformationen und tragen Sie 
+\begin_inset Formula $\left\langle M(t)\right\rangle $
+\end_inset
+
+ gegen 
+\begin_inset Formula $t$
+\end_inset
+
+ auf.
+ Was beobachten Sie und welche Schlussfolgerungen ziehen Sie für die Equilibrier
+ung des Systems?
+\end_layout
+
+\begin_layout Enumerate
+Wiederholen Sie Punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:Ermitteln-Sie-"
+
+\end_inset
+
+ des Simple Sampling wobei Sie nun für jede Temperatur zunächst equilibrieren
+ und anschließend eine ausreichende Zahl an Konformationen bei gegebener
+ Temperatur zur Auswertung ermitteln.
+ Beginnen Sie mit hohen Temperaturen und kühlen Sie schrittweise weiter
+ ab.
+ Vergleichen Sie ihre Ergebnisse mit den Resultaten von Simple Sampling
+ und erklären Sie die Unterschiede.
+ Vergleichen Sie ebenfalls mit den Lösungen aus der Vorlesung.
+ 
+\end_layout
+
+\end_body
+\end_document
