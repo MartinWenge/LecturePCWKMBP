@@ -1,0 +1,54 @@
+set terminal png
+
+
+####################################  IMPORTANCE SAMPLING  ####################################
+set title 'Ising Model Importance Sampling'
+set key below
+
+set output 'equilibration.png'
+set yrange [-1:1]
+set xlabel "t"
+set ylabel "M"
+plot "importance_sampling_equilibrate_0.02.dat" u 1:2 pt 2 ps 0.5 lc 1 title 'equilibrate beta= 0.02', \
+     "importance_sampling_equilibrate_0.5.dat" u 1:2 pt 4 ps 0.5 lc 2 title 'equilibrate beta= 0.5', \
+     "importance_sampling_equilibrate_0.9.dat" u 1:2 pt 6 ps 0.5 lc 3 title 'equilibrate beta= 0.9', \
+     "importance_sampling_equilibrate_1.4.dat" u 1:2 pt 8 ps 0.5 lc 4 title 'equilibrate beta= 1.4'
+
+set output 'magnetization.png'
+set xrange [0:4]
+set yrange [0:1]
+set xlabel "T/T_C"
+set ylabel "|M|"
+beta_0=0.86
+T_C=1/beta_0
+plot "importance_sampling_magnetization.dat" u (1/$1)/T_C:(abs($2)) pt 2 ps 1 lc 2 title 'magnetization L=20'
+
+set output 'energy.png'
+set autoscale
+set xrange [0:4]
+set ylabel "E"
+plot "importance_sampling_energy.dat" u (1/$1)/T_C:2 pt 2 ps 1 lc 2 title 'energy L=20'
+
+set output 'heat_cap.png'
+set autoscale
+set xrange [0:4]
+set ylabel "c_V"
+plot "importance_sampling_heat_cap.dat" u (1/$1)/T_C:2 pt 2 ps 1 lc 2 title 'heat capacity L=20'
+
+####################################  SIMPLE SAMPLING  ####################################
+set title 'Ising Model Simple Sampling'
+set output 'magnetization_simple.png'
+set xrange [0:4]
+set yrange [0:1]
+set xlabel "T/T_C"
+set ylabel "|M|"
+beta_0=0.86
+T_C=1/beta_0
+plot "simple_sampling_magnetization.dat" u (1/$1)/T_C:(abs($2)) pt 2 ps 1 lc 2 title 'magnetization L=20'
+
+set output 'energy_simple.png'
+set autoscale
+set xrange [0:4]
+set ylabel "E"
+plot "simple_sampling_energy.dat" u (1/$1)/T_C:2 pt 2 ps 1 lc 2 title 'energy L=20'
+#
