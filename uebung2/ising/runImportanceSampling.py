@@ -2,13 +2,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 import myIsing
 
-
+# prepare data containers
 temp = []
 magnetisierung = []
 energie = []
 waermekapazitaet = []
+
+# run simulation for different temperatures
 for T in np.arange(0.1, 3, 0.02):
-    m, e, c = myIsing.runImportanceSampling(20, 1.0/T, 1.0, 0.0, 40)
+    m, e, c = myIsing.runImportanceSampling(20, 1.0/T, 1.0, 0.0, 1000)
     temp.append(T)
     magnetisierung.append(np.fabs(m))
     energie.append(e)

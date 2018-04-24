@@ -71,15 +71,27 @@ class IsingSimulator:
                 
                 
     def plotConfig(self):
-        plt.figure()
+        plt.figure(dpi=90)
         plt.pcolormesh(self.lattice)
         plt.xlabel('X')
         plt.ylabel('Y')
         plt.title('spatial magnetisation')
         plt.show()
         
+    def plotEquilibrationRun(self):
+        self.randomConformation()
+        nMCS = 20
+        time = []
+        magnetisation = []
+        for i in range(200):
+            self.performMCS(nMCS)
+            time.append(nMCS*i)
+            magnetisation.append(self.calcMagnetisation())
         
-        
+        plt.figure(dpi=120)
+        plt.plot(time, magnetisation, 'g+')
+
+
 # function to perform simple sampling simulation run        
 def runIsingSimulationSimple(l=20, InvTemp=1.0, j_inter=1.0, b_ext=0.0, nSteps=1000):
     ising = IsingSimulator(l, InvTemp, j_inter, b_ext)
@@ -101,13 +113,13 @@ def runIsingSimulationSimple(l=20, InvTemp=1.0, j_inter=1.0, b_ext=0.0, nSteps=1
     aveEner = sum(energy) / (sum(bolzma) * nSteps)
     aveEner2 = sum(energy2) / (sum(bolzma) * nSteps)
     aveMagn = sum(magnet) / (sum(bolzma) * nSteps)
-    heatcap = InvTemp * InvTemp * ( aveEner2/nSteps - aveEner*aveEner )
-    #(beta*beta*((mean_squared_energy/time)-(ave_energy*ave_energy/(time*time))))/(lattice.size());
+    heatcap = InvTemp * InvTemp * ( aveEner2 - aveEner*aveEner )
     
     return aveMagn, aveEner, heatcap
 
+
 #function to perform importance sampling simulations
-def runImportanceSampling(l=20, InvTemp=1.0, j_inter=1.0, b_ext=0.0, nSteps=10):
+def runImportanceSampling(l=20, InvTemp=1.0, j_inter=1.0, b_ext=0.0, nSteps=100):
     ising = IsingSimulator(l, InvTemp, j_inter, b_ext)
     energy  = []
     energy2 = []
@@ -117,7 +129,7 @@ def runImportanceSampling(l=20, InvTemp=1.0, j_inter=1.0, b_ext=0.0, nSteps=10):
     ising.performMCS(2000)
     # run simulations
     for t in range(nSteps):
-        ising.performMCS(100)
+        ising.performMCS(200)
         e = ising.calcEnergy()
         energy.append(e)
         energy2.append(e*e)
