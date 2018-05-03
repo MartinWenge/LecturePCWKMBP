@@ -12,7 +12,7 @@ class randomWalk:
             self.walkedPath = [(0,0)]
         for _ in range(self.steps):
             newX = self.walkedPath[-1][0] + ( ( np.random.randint(0,3) ) - 1)
-            newY = self.walkedPath[-1][0] + ( ( np.random.randint(0,3) ) - 1)
+            newY = self.walkedPath[-1][1] + ( ( np.random.randint(0,3) ) - 1)
             self.walkedPath.append((newX,newY))
 
     def getEndPosition(self):
