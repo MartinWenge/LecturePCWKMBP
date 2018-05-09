@@ -128,8 +128,10 @@ class BFMSimulator:
         moveDir = self.moveDirections[moveIdx]
         # loop over beighbors, set checker to true if conflict arised
         for n in self.molecules[idx].neighbors:
-            bond = self.molecules[n].pos-(self.molecules[idx].pos + moveDir)
+            bond = (self.molecules[n].pos)-(self.molecules[idx].pos + moveDir)
+            print(idx,n,bond)
             if not (tuple(bond) in self.bondset):
+                print("bond not in bondset")
                 # if bond not in bondset return True
                 return True
         return False
@@ -162,16 +164,16 @@ class BFMSimulator:
 
         # check the lattice:
         position = monoPos
-        if self.lattice[position[0]%(self.boxX-1),position[1]%(self.boxY-1),position[2]%(self.boxZ-1)] == 1:
+        if self.lattice[int(position[0]%(self.boxX-1)),int(position[1]%(self.boxY-1)),int(position[2]%(self.boxZ-1))] == 1:
             return True
         position = monoPos+perp1
-        if self.lattice[position[0]%(self.boxX-1),position[1]%(self.boxY-1),position[2]%(self.boxZ-1)] == 1:
+        if self.lattice[int(position[0]%(self.boxX-1)),int(position[1]%(self.boxY-1)),int(position[2]%(self.boxZ-1))] == 1:
             return True
         position = monoPos+perp2
-        if self.lattice[position[0]%(self.boxX-1),position[1]%(self.boxY-1),position[2]%(self.boxZ-1)] == 1:
+        if self.lattice[int(position[0]%(self.boxX-1)),int(position[1]%(self.boxY-1)),int(position[2]%(self.boxZ-1))] == 1:
             return True
         position = monoPos+perp1+perp2
-        if self.lattice[position[0]%(self.boxX-1),position[1]%(self.boxY-1),position[2]%(self.boxZ-1)] == 1:
+        if self.lattice[int(position[0]%(self.boxX-1)),int(position[1]%(self.boxY-1)),int(position[2]%(self.boxZ-1))] == 1:
             return True
 
         # all lattice sites empty? return False
@@ -192,7 +194,7 @@ class BFMSimulator:
     #        dummy += setall
     #    return frozenset(dummy)
     # if itertools not available:
-         return frozenset({(-3, -1, 0),(-3, 0, -1),(-3, 0, 0),(-2, -2, -1),(-2, -1, -2),(-2, -1, -1),(-2, -1, 0),(-2, 0, -1),(-2, 0, 0),(-1, -3, 0),(-1, -2, -2),(-1, -2, -1),(-1, -2, 0),(-1, -1, -2),(-1, 0, -3),(-1, 0, -2),(0, -3, -1),(0, -3, 0),(0, -2, -1),(0, -2, 0),(0, -1, -3),(0, -1, -2),(0, 0, -3),(0, 0, -2),(0, 0, 2),(0, 0, 3),(0, 1, 2),(0, 1, 3),(0, 2, 0),(0, 2, 1),(0, 3, 0),(0, 3, 1),(1, 0, 2),(1, 0, 3),(1, 1, 2),(1, 2, 0),(1, 2, 1),(1, 2, 2),(1, 3, 0),(2, 0, 0),(2, 0, 1),(2, 1, 0),(2, 1, 1),(2, 1, 2),(2, 2, 1),(3, 0, 0),(3, 0, 1),(3, 1, 0)})
+         return frozenset({(-3, -1, 0),(-3, 0, -1),(-3, 0, 0),(-3, 0, 1),(-3, 1, 0),(-2, -2, -1),(-2, -2, 1),(-2, -1, -2),(-2, -1, -1),(-2, -1, 0),(-2, -1, 1),(-2, -1, 2),(-2, 0, -1),(-2, 0, 0),(-2, 0, 1),(-2, 1, -2),(-2, 1, -1),(-2, 1, 0),(-2, 1, 1),(-2, 1, 2),(-2, 2, -1),(-2, 2, 1),(-1, -3, 0),(-1, -2, -2),(-1, -2, -1),(-1, -2, 0),(-1, -2, 1),(-1, -2, 2),(-1, -1, -2),(-1, -1, 2),(-1, 0, -3),(-1, 0, -2),(-1, 0, 2),(-1, 0, 3),(-1, 1, -2),(-1, 1, 2),(-1, 2, -2),(-1, 2, -1),(-1, 2, 0),(-1, 2, 1),(-1, 2, 2),(-1, 3, 0),(0, -3, -1),(0, -3, 0),(0, -3, 1),(0, -2, -1),(0, -2, 0),(0, -2, 1),(0, -1, -3),(0, -1, -2),(0, -1, 2),(0, -1, 3),(0, 0, -3),(0, 0, -2),(0, 0, 2),(0, 0, 3),(0, 1, -3),(0, 1, -2),(0, 1, 2),(0, 1, 3),(0, 2, -1),(0, 2, 0),(0, 2, 1),(0, 3, -1),(0, 3, 0),(0, 3, 1),(1, -3, 0),(1, -2, -2),(1, -2, -1),(1, -2, 0),(1, -2, 1),(1, -2, 2),(1, -1, -2),(1, -1, 2),(1, 0, -3),(1, 0, -2),(1, 0, 2),(1, 0, 3),(1, 1, -2),(1, 1, 2),(1, 2, -2),(1, 2, -1),(1, 2, 0),(1, 2, 1),(1, 2, 2),(1, 3, 0),(2, -2, -1),(2, -2, 1),(2, -1, -2),(2, -1, -1),(2, -1, 0),(2, -1, 1),(2, -1, 2),(2, 0, -1),(2, 0, 0),(2, 0, 1),(2, 1, -2),(2, 1, -1),(2, 1, 0),(2, 1, 1),(2, 1, 2),(2, 2, -1),(2, 2, 1),(3, -1, 0),(3, 0, -1),(3, 0, 0),(3, 0, 1),(3, 1, 0)})
     
     # write 0 (free) or 1 (occupied) to lattice
     def setToLattice(self,pos, value = 1):
