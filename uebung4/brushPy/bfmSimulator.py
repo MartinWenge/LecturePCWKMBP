@@ -129,9 +129,7 @@ class BFMSimulator:
         # loop over beighbors, set checker to true if conflict arised
         for n in self.molecules[idx].neighbors:
             bond = (self.molecules[n].pos)-(self.molecules[idx].pos + moveDir)
-            print(idx,n,bond)
             if not (tuple(bond) in self.bondset):
-                print("bond not in bondset")
                 # if bond not in bondset return True
                 return True
         return False

@@ -10,7 +10,7 @@ myBfm = bfm.BFMSimulator(BoxX, BoxY, BoxZ, PeriodicX, PeriodicY, PeriodicZ)
 myBfm.addLinearChain( 64, np.array((0,BoxY/2,BoxZ/2)) )
 
 # run the short simulation (True = with, False = without) excluded volume 
-for i in range(2):
+for i in range(1000):
     myBfm.performMcs(True)
 
 # print the config and do all the evaluations (Rg, Ree, g(r))
