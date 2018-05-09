@@ -1,0 +1,175 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{babel}
+\end_preamble
+\options journal=mamobx,manuscript=article,maxauthors=15,biblabel=plain
+\use_default_options false
+\maintain_unincluded_children false
+\language german
+\language_package default
+\inputencoding iso8859-15
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\headheight 0.5cm
+\headsep 0.5cm
+\footskip 0.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Leistungsnachweis 1: 
+\end_layout
+
+\begin_layout Subsection*
+Monte-Carlo Simulationen
+\end_layout
+
+\begin_layout Standard
+Nutzen Sie das Softwarepaket LeMonADE ( github.com/LeMonADE-project/LeMonADE
+ ) oder die Python-Klassen von vorherigen Übungen zur Lösung der folgenden
+ Aufgaben.
+ Für die Bewertung stellen Sie ein 
+\shape italic
+kurzes
+\shape default
+ Protokoll mit dem groben Arbeitsablauf und den Antworten zu den Fragen
+ zusammen.
+ Binden Sie ihre Simualtionsergebnisse entsprechend als Bilder, Diagramme
+ oder Tabellen ein.
+ Das Protokoll ist am Ende der Einheit per mail abzugeben, die benutzten
+ main-Funktionen und 
+\shape italic
+eigener
+\shape default
+ Quellcode als zip oder tar Archiv.
+\end_layout
+
+\begin_layout Subsubsection*
+Adsorption von Monomeren
+\end_layout
+
+\begin_layout Enumerate
+Erstellen Sie eine Startkonformation mit 512 einzelnen Monomeren in einer
+ kubischen Box mit 
+\begin_inset Formula $64^{3}$
+\end_inset
+
+ Gitterplätzen.
+\end_layout
+
+\begin_layout Enumerate
+Implementieren Sie absorbierenden Wände um diese Monomere an zwei gegenüberliege
+nden Wänden mit verschiedenen Adsorptionsenergien 
+\begin_inset Formula $\epsilon[0,10]$
+\end_inset
+
+ zu simulieren.
+ Messen Sie die mittlere Anzahl adsorbierter Monomere.
+\end_layout
+
+\begin_layout Enumerate
+Tragen Sie die Adsorptionsisotherme 
+\begin_inset Formula $N_{ads}/N(\epsilon)$
+\end_inset
+
+ auf und vergleichen Sie mit der analytischen Vorhersage der Boltzmann Statistik
+ 
+\begin_inset Formula 
+\[
+\frac{N_{ads}}{N}(\epsilon)=\frac{\exp(\epsilon/k_{\text{B}}T)}{\exp(\epsilon/k_{\text{B}}T)+V_{0}/V_{abs}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Leiten Sie diesen Ausdruck her.
+ Nehmen Sie als Ausgangspunkt die Entropie des idealen Gases 
+\begin_inset Formula $S=S(T)-k_{\text{B}}N\ln(V/v_{0}N)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Zusatz: Ising Modell
+\end_layout
+
+\begin_layout Enumerate
+Nutzen Sie die Materialien der Übung über das Ising Modell um die magnetische
+ Suszeptibilität aus den Fluktuationen der Magnetisierung für verschiende
+ Temperaturen über- und unterhalb der kritischen Temperatur zu bestimmen.
+ Was erwarten Sie in der Nähe der kritischen Temperatur?
+\end_layout
+
+\end_body
+\end_document

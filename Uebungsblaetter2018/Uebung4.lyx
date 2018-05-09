@@ -1,0 +1,313 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{babel}
+\end_preamble
+\options journal=mamobx,manuscript=article,maxauthors=15,biblabel=plain
+\use_default_options false
+\maintain_unincluded_children false
+\language german
+\language_package default
+\inputencoding iso8859-15
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\headheight 0.5cm
+\headsep 0.5cm
+\footskip 0.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Übung 4
+\end_layout
+
+\begin_layout Subsubsection*
+Das Bindungs-Fluktuations Modell (Bond Fluctuation Model)
+\end_layout
+
+\begin_layout Standard
+Mit diesem Übungsblatt verwenden Sie zum ersten Mal das sogenannte 
+\begin_inset Quotes eld
+\end_inset
+
+Bindungs-Fluktuations-Modell
+\begin_inset Quotes erd
+\end_inset
+
+ (BFM), das in der Polymerphysik häufig zur Simulation von Schmelzen und
+ Lösungen verwendet wird.
+ Die tatsächliche Struktur (Valenzwinkel, Rotationsbarrieren) eines amorphen
+ Polymers kann für eine ausreichende Zahl an Monomeren vernachlässigt werden,
+ so dass sich die statistischen Segmente bis auf das ausgeschlossene Volumen
+ hin frei zueinander einstellen können:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Abb_3_1.pdf
+	width 90text%
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Die Bindungsvektoren werden auf die Menge 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+B=P\pm\left(\begin{array}{c}
+2\\
+0\\
+0
+\end{array}\right)\bigcup P\pm\left(\begin{array}{c}
+2\\
+1\\
+0
+\end{array}\right)\bigcup P\pm\left(\begin{array}{c}
+2\\
+1\\
+1
+\end{array}\right)\bigcup P\pm\left(\begin{array}{c}
+2\\
+2\\
+1
+\end{array}\right)\bigcup P\pm\left(\begin{array}{c}
+3\\
+0\\
+0
+\end{array}\right)\bigcup P\pm\left(\begin{array}{c}
+3\\
+1\\
+0
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+aus 108 Bindungsvektoren zwischen den Monomeren eingeschränkt, um eine Überkreuz
+ung der Ketten bei einer Bewegung eines Monomers zu verhindern.
+ 
+\begin_inset Formula $P\pm$
+\end_inset
+
+ bezeichnet dabei die Menge aller möglichen Permutationen und Vorzeichenkombinat
+ionen der Vektorkoordinaten.
+ Auf diese Weise sind 87 verschiedene Winkeleinstellungen zwischen den Segmenten
+ und fünf Bindungslängen (
+\begin_inset Formula $2$
+\end_inset
+
+, 
+\begin_inset Formula $\sqrt{5}$
+\end_inset
+
+, 
+\begin_inset Formula $\sqrt{6}$
+\end_inset
+
+, 3 und 
+\begin_inset Formula $\sqrt{10}$
+\end_inset
+
+) möglich.
+ Die BFM ist damit weitaus flexibler als das bisher eingesetzte Gittermodell
+ (Übung 3) zur Simulation von Makromolekülen.
+\end_layout
+
+\begin_layout Standard
+Die Bewegung eines Monomers wird folgendermaßen realisiert: Zunächst werden
+ statistisch ein Monomer und eine der 6 Bewegungsrichtungen ausgewählt.
+ Anschließend wird überprüft, ob für die neue Position des Monomers die
+ Bindungsvektoren zu den Kettennachbarn in 
+\begin_inset Formula $B$
+\end_inset
+
+ enthalten sind und ob die 4 Gitterplätze in Bewegungsrichtung noch frei
+ sind (im Falle energetischer Wechselwirkungen würde noch der Metropolis-Algorit
+hmus angewandt).
+ Nur wenn diese Kriterien alle erfüllt sind, wird die Bewegung durchgeführt.
+ Obige Abbildung zeigt einen Sprungversuch in positive y-Richtung, bei dem
+ alle Voraussetzungen erfüllt sind.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Polymerbürsten
+\end_layout
+
+\begin_layout Enumerate
+Erstellen Sie einen eigenen Updater zur Erstellung von Polymerketten mit
+ ausgeschlossenem Volumen, deren erstes Monomer an der Grundfläche der Simulatio
+nsbox verankert ist als Modellsystem für eine Polymerbürste.
+ Nutzen Sie dafür das FeatureFixedMonomers.
+ Erzeugen Sie Systeme mit 
+\begin_inset Formula $8x8$
+\end_inset
+
+ Ketten aus 32 Monomeren bei Ankerpunktdichten 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ 1/16, 1/32, 1/256 sowie eine einzelne geankerte Kette.
+\end_layout
+
+\begin_layout Enumerate
+Equilibrieren Sie die Bürste und bestimmen Sie die mittlere Höhe 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ Vergleichen Sie die Abhängigkeit 
+\begin_inset Formula $H\sim\sigma$
+\end_inset
+
+ mit der theoretischen Vorhersage.
+\end_layout
+
+\begin_layout Subsubsection*
+Polymer in eingeschränkter Geometrie
+\end_layout
+
+\begin_layout Enumerate
+Erstellen Sie mit dem LeMonADE Code-Paket oder einer eigenen Python Klasse
+ eine einzelne Polymerkette mit und ohne ausgeschlossenem Volumem mit 
+\begin_inset Formula $N=64$
+\end_inset
+
+ in einem Spalt der Breite 
+\begin_inset Formula $D_{S}$
+\end_inset
+
+ und einer Pore mit quadratischem Querschnitt der Fläche 
+\begin_inset Formula $D_{P}^{2}$
+\end_inset
+
+ mit verschiedenen Abmessungen.
+ Beobachten Sie den Übergang von ungestörten Konformationen zu quais zwei-
+ bzw.
+ ein-dimensionalen Konformationen anhand der Veränderung des End-zu-End
+ Abstandes und des Gyrationsradius.
+ Nutzen Sie dafür die Analyzer aus der letzten Übung und den UpdaterAddLinearCha
+ins aus dem LeMonADE-repository.
+\end_layout
+
+\begin_layout Enumerate
+Erstellen Sie einen Analyzer zur Berechnung der Paarkorrelationsfunktion
+ 
+\begin_inset Formula $g(r)$
+\end_inset
+
+ (radiale Verteilungsfunktion):
+\begin_inset Formula 
+\[
+g(r)=\frac{V}{N^{2}}\langle\sum_{j\neq i}^{N}\delta(r-|R_{\text{i}}-R_{\text{j}}|)\rangle
+\]
+
+\end_inset
+
+mit der Teilchenzahl 
+\begin_inset Formula $N$
+\end_inset
+
+ und den Monomerpositionen 
+\begin_inset Formula $\vec{R}_{i,j}$
+\end_inset
+
+.
+ Welche Informationen können Sie 
+\begin_inset Formula $g(r)$
+\end_inset
+
+ entnehmen? Welche Größen lassen sich daraus ableiten?
+\end_layout
+
+\end_body
+\end_document

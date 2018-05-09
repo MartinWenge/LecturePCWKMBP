@@ -1,0 +1,167 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{babel}
+\end_preamble
+\options journal=mamobx,manuscript=article,maxauthors=15,biblabel=plain
+\use_default_options false
+\maintain_unincluded_children false
+\language german
+\language_package default
+\inputencoding iso8859-15
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\headheight 0.5cm
+\headsep 0.5cm
+\footskip 0.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Übung 5
+\end_layout
+
+\begin_layout Subsection*
+Self Avoiding Walk
+\end_layout
+
+\begin_layout Enumerate
+Erschaffen Sie mit einem geeigneten Programm eine große Anzahl an selbstvermeide
+nden Zufallspfaden (SAW) für mindestens 6 verschiedene Schrittanzahlen 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ Was beobachten Sie bei der Erschaffung sehr langer Pfade?
+\end_layout
+
+\begin_layout Enumerate
+Berechnen Sie End-zu-End Abstände und Gyrationsradien der SAW und vergleichen
+ Sie mit theoretischen Vorhersagen.
+ Welchem Polymermodell entspricht der SAW? Welche fraktale Dimension haben
+ Ihre Systeme? 
+\end_layout
+
+\begin_layout Enumerate
+Berechnen Sie die Streufunktion 
+\begin_inset Formula $S(q)$
+\end_inset
+
+ um die in Aufgabe 2 getroffenen Aussagen mit einer zweiten Methode zu verifizie
+ren.
+ Vergleichen Sie die Ergebnisse für die Fraktale Dimension.
+ Welche Fehlerquellen haben die verschiedenen Ansätze?
+\end_layout
+
+\begin_layout Subsection*
+Adsorption von Polymerketten
+\end_layout
+
+\begin_layout Enumerate
+Erstellen Sie Konformationen einer Einzelkette mit unterschiedlichen Längen
+ 
+\begin_inset Formula $N$
+\end_inset
+
+ mit und ohne ausgeschlossenem Volumen und geeigneten Randbedingungen für
+ Simulationen mit absorbierenden Wänden.
+\end_layout
+
+\begin_layout Enumerate
+Bestimmen Sie die Adsorptionsenergie für die Kettenlänge 
+\begin_inset Formula $N=64$
+\end_inset
+
+ für 
+\begin_inset Formula $\epsilon[0,2]$
+\end_inset
+
+ und erläutern Sie Ihre Beobachtungen.
+ Vergleichen Sie (qualitativ) mit dem idealen Gas.
+\end_layout
+
+\begin_layout Enumerate
+Simulieren Sie Ketten unterschiedlicher Länge in schwacher (
+\begin_inset Formula $\epsilon<1$
+\end_inset
+
+ 
+\begin_inset Formula $k_{\text{B}}T$
+\end_inset
+
+) und starker Adsorption und bestimmen Sie einerseits das Verhalten der
+ Ausdehnung 
+\begin_inset Formula $R_{g}\sim N^{x}$
+\end_inset
+
+ parallel und senkrecht zur Wand und andererseits die Größe der Adsorptionsblobs.
+ Vergleichen Sie mit den theoretischen Vorhersagen.
+\end_layout
+
+\end_body
+\end_document
