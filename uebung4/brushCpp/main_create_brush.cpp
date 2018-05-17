@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
     ("help,h", "help message")
     ("filename,f", value<std::string>(&fileName)->default_value("brushConfig.bfm"), "output filename")
     ("chainlength,n", value<uint32_t>(&chainLength)->default_value(32), "number of monomers in chain")
-    ("nChains,m", value<uint32_t>(&numChains)->default_value(1), "number of monomers in chain")
+    ("nChains,m", value<uint32_t>(&numChains)->default_value(1), "number of chains in box")
     ("boxX,x", value<uint32_t>(&boxX)->default_value(64), "boxSize in x-direction")
     ("boxY,y", value<uint32_t>(&boxY)->default_value(64), "boxSize in y-direction")
     ("boxZ,z", value<uint32_t>(&boxZ)->default_value(64), "boxSize in z-direction the NONPERIODIC grafting surface");
