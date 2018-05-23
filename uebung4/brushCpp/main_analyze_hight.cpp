@@ -27,7 +27,9 @@
 
 // Analyzer zum rausschreiben der Konformationen
 // taskmanager.addAnalyzer(new AnalyzerWriteBfmFile( filenname, ingredients, write type (wir möchten ein neues file schreiben, also AnalyzerWriteBfmFile::NEWFILE, es gibt noch APPEND und OVERWRITE
-#include <LeMonADE/analyzer/AnalyzerWriteBfmFile.h>
+#include <LeMonADE/updater/UpdaterReadBfmFile.h>
+
+#include "AnalyzerBrushHight.h"
 
 // read in command line options
 #include <boost/program_options.hpp>
@@ -37,20 +39,14 @@ int main(int argc, char* argv[])
 {
   /* +++++++++++++++++++++++++++++  read arguments  ++++++++++++++++++++++++++++ */
   // diese Variablen wollen wir über die Kommandozeile eingeben und den Analyzern/Updatern übergeben
-  std::string fileName;
-  uint32_t chainLength, numChains;
-  uint32_t boxX, boxY, boxZ;
+  std::string fileName, outName;
   
   // hier werden die boost funktionen zum Einlesen der Kommadozeilenoptionen benutzt
   options_description desc{"Allowed options"};
   desc.add_options()
     ("help,h", "help message")
-    ("filename,f", value<std::string>(&fileName)->default_value("brushConfig.bfm"), "output filename")
-    ("chainlength,n", value<uint32_t>(&chainLength)->default_value(32), "number of monomers in chain")
-    ("nChains,m", value<uint32_t>(&numChains)->default_value(1), "number of chains in box")
-    ("boxX,x", value<uint32_t>(&boxX)->default_value(64), "boxSize in x-direction")
-    ("boxY,y", value<uint32_t>(&boxY)->default_value(64), "boxSize in y-direction")
-    ("boxZ,z", value<uint32_t>(&boxZ)->default_value(64), "boxSize in z-direction the NONPERIODIC grafting surface");
+    ("input,i", value<std::string>(&fileName)->default_value("brushConfig.bfm"), "input filename")
+    ("output,o", value<std::string>(&outName)->default_value("brushHight.dat"), "output filename");
   //neue Einlesevariablen hier vor dem ; hinzufügen über ("langname, kurzform(ein Buchstabe)",value<Typ der Variable>(&zuzuweisende Variable)->default_value(standardwert), "Beschreibung")
     
   variables_map options_map;
@@ -66,7 +62,7 @@ int main(int argc, char* argv[])
   /* +++++++++++++++++++++++++  setup system  +++++++++++++++++++++++++++++++ */
   //zuerst definieren wir die Feature Liste, hier nur zwei, sonst für X Features LOKI_TYPELIST_X(1, 2, ..., X) einfügen. mögliche Features: FeatureExcludedVolume, FeatureBoltzmann, FeatureWall, FeatureNNInteractions
   // hier entscheiden wir, ob wir eine ideale oder eine reale Kette simulieren möchten
-  typedef LOKI_TYPELIST_4(FeatureMoleculesIO,FeatureFixedMonomers,FeatureAttributes,FeatureExcludedVolumeSc<FeatureLattice<bool> >) Features;
+  typedef LOKI_TYPELIST_2(FeatureMoleculesIO,FeatureFixedMonomers) Features;
 
   
   //dann definieren wir unseren Molecules Type mit den benutzen Koordinaten, den entsprechenden Monomer Erweiterungen der Features und der maximalen Anzahl Bindungen pro Monomer
@@ -83,26 +79,14 @@ int main(int argc, char* argv[])
   RandomNumberGenerators rng;
   rng.seedAll();
   
-  /* +++++++++++++++++++++++++++  prepare ingredients  +++++++++++++++++++++++ */
-  //Wenn man ein völlig leeres System benutzt und nicht schon fertige Konformationen einließt, müssen für manche Features (hier FeatureBox) Werte gesetzt werden, kann aber auch der Updater übernehmen, der das System erstellt. Ich habe es hier rein gemacht, damit man sieht, was man macht und wie die interfaces aussehen:
-  ingredients.setBoxX(boxX);
-  ingredients.setBoxY(boxY);
-  ingredients.setBoxZ(boxZ);
-  ingredients.setPeriodicX(true);
-  ingredients.setPeriodicY(true);
-  ingredients.setPeriodicZ(false);
-  ingredients.modifyBondset().addBFMclassicBondset();
-  // synchronize legt bei FeatureBondset die Lookup Table für das Bondset an wobei überprüft wird, ob die existierenden Bindungsvektoren aller verbundenen Monomere teil des Bondsets sind und bei FeatureBox wird überprüft, ob alle Boxgrößen und Periodizitäten gesetzt sind und beim Feature Excluded Volume wird das Gitter initial belegt
-  ingredients.synchronize();
-  
+
   /* ++++++++++++++++++++++++++++++  use TaskManager  +++++++++++++++++++++++++ */
   TaskManager taskManager;
   
   //hier benutzen wir den Updater zum Ketten hinzufügen. Wir wollen nur eine Kette (zweiter Parameter=1) der Länge chainLength und es soll nur einmal aufgerufen werden ( 0 hinter dem Konstruktor)
-  taskManager.addUpdater(new UpdaterAddGraftedChains<IngredientsType>(ingredients,numChains,chainLength), 0);
-  
+  taskManager.addUpdater(new UpdaterReadBfmFile<IngredientsType>(fileName,ingredients,UpdaterReadBfmFile<IngredientsType>::READ_STEPWISE));
   // hinzufügen des Schreibtools 
-  taskManager.addAnalyzer(new AnalyzerWriteBfmFile<IngredientsType>(fileName,ingredients,AnalyzerWriteBfmFile<IngredientsType>::NEWFILE));
+  taskManager.addAnalyzer(new AnalyzerBrushHight<IngredientsType>(ingredients, outName));
   
   // hier ruft der Taskmanager für alle zugefügten analyzer und Updater die initialize Funktion auf
   taskManager.initialize();
