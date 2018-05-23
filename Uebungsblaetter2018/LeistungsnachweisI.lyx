@@ -165,9 +165,16 @@ Ising Modell
 \end_layout
 
 \begin_layout Enumerate
-Nutzen Sie die Materialien der Übung über das Ising Modell um die magnetische
- Suszeptibilität aus den Fluktuationen der Magnetisierung für verschiende
- Temperaturen über- und unterhalb der kritischen Temperatur zu bestimmen.
+Nutzen Sie die Materialien der Übung über das Ising Modell.
+ Stellen Sie die Magnetisierung des 2D Ising Modells einerseits berechnet
+ durch Simulationen für verschiedene Temperaturen und andererseits vorhergesagt
+ durch die analytische Lösung gegenüber.
+\end_layout
+
+\begin_layout Enumerate
+Berechnen Sie die magnetische Suszeptibilität aus den Fluktuationen der
+ Magnetisierung für verschiende Temperaturen über- und unterhalb der kritischen
+ Temperatur.
  Was erwarten Sie in der Nähe der kritischen Temperatur?
 \end_layout
 
