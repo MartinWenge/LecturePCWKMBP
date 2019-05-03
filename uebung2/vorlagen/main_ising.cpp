@@ -20,7 +20,6 @@ int main(int argc, char* argv[]){
   int simulation_time(1000);
   int lattice_size(20);
   double extern_field_B(0.0);
-  double temp(0.0);
   double temperatue(0.1);
   
   // read in arguments from command line: 
@@ -47,7 +46,7 @@ int main(int argc, char* argv[]){
 	      // ...and easy to convert to double
         extern_field_B = atol(argv[i+1]);
       }else if(option.compare("-temperature")==0){ // set temperatue
-        temp = atol(argv[i+1]);
+        temperatue = atol(argv[i+1]);
       }else{
 	      std::cout << "unknown paramter, use: -time, -size, -field, -temperature"<<std::endl;
       }
@@ -57,7 +56,7 @@ int main(int argc, char* argv[]){
     throw std::runtime_error("check input: -time ..., -size ..., -field ..., -temperature ...");
   }
   //show values:
-  std::cout << "time= "<<simulation_time<<", extern field= "<<extern_field_B<<", lattice size= "<<lattice_size<<", invTemperature= "<<temp<<std::endl;
+  std::cout << "time= "<<simulation_time<<", extern field= "<<extern_field_B<<", lattice size= "<<lattice_size<<", invTemperature= "<<temperatue<<std::endl;
   
   // ############ hier we start with the simulations ################## //
   
