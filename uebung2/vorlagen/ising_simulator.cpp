@@ -108,12 +108,27 @@ void ising_simulator::randomize(){
 void ising_simulator::perform_mcs(int time){
   int counter(0); // check for moves
 
-  /* ############ add your ideas ############ */
-  /* ############ add your ideas ############ */
-  /* ############ add your ideas ############ */
-  
-  if(counter==0) 
-    std::cout<<"Keine akzeptierte Bewegung in aktuellem Monte Carlo Schritt!!\n"; 
+  // deine for schleife sollte bis lattice_size*lattice_size gehen, ein -1 ist nicht nötig, wegen dem "i <", das stopt automatisch bei (L*L)-1
+  for(int i=0; i < lattice_size*lattice_size - 1; i++){
+    int x(dist_int(rng_mt));
+    int y(dist_int(rng_mt));
+    int k(x + lattice_size*y);
+
+    double E_0(calc_single_spin_energy(x, y));
+    double flipprob(exp(-2 * E_0 * beta));
+    // das ist ein seltsames Kriterium ;) du willst doch den Boltzmann Faktor exp(\Delta E / k_B T) mit einer zufallszahl zwischen [0,1] vergleichen
+    // if ( flipprob < dist_double(rng_mt) ){ ...
+    if (k/(lattice_size*lattice_size - 1) < flipprob){
+      lattice.at(k) = lattice.at(k)*(-1);
+      counter =+ 1;
+    } else {
+      // dieses break bedeutet, dass du nach einem nicht akzeptierten move aus deiner for Schleife raus springst. Willst du das wirklich? Brauchst du hier ein else?
+      break;
+    }
+  }
+
+  if(counter==0)
+    std::cout<<"Keine akzeptierte Bewegung in aktuellem Monte Carlo Schritt!!\n";
 }
 
 // do the complex things
