@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
   taskManager.addAnalyzer(new AnalyzerWriteBfmFile<IngredientsType>(ofilename,ingredients,AnalyzerWriteBfmFile<IngredientsType>::APPEND));
   
   taskManager.initialize();
-  taskManager.run(100);
+  taskManager.run(1000);
   taskManager.cleanup();
   
   return 0;

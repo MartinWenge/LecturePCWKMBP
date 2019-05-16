@@ -26,7 +26,7 @@ if [ -d "LeMonADE" ]; then
     cd LeMonADE
     #run configure script to set installpath to folder we created
     ./configure -DINSTALLDIR_LEMONADE=../../lemonade_install
-    make docs
+    #make docs
     make install
     
     #if [ -d "build/docs/html" ]; then
