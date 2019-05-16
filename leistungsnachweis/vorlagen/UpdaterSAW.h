@@ -71,7 +71,7 @@ bool UpdaterSelfAvoidingWalk<IngredientsType>::execute(){
   bool successfull(false);
   int32_t counter(0);
   while( !successfull && counter<10000 ){
-    std::cout << counter << ": "<<successfull<< std::endl;
+    //std::cout << counter << ": "<<successfull<< std::endl;
 
     for(int32_t i=0;i<nSteps;i++){
       // if there is at lest one monomer, add a new one
@@ -85,13 +85,12 @@ bool UpdaterSelfAvoidingWalk<IngredientsType>::execute(){
           // bool ? true : false; == if(bool){trueAction;}else{falseAction;}
           VectorInt3 direction(dir==0 ? 2*sign : 0, dir==1 ? 2*sign : 0,dir==2 ? 2*sign : 0);
 
-          std::cout << "dir = "<<dir<<", sign = "<< sign<<", direction = "<<direction<< std::endl;
-
+          //std::cout << "dir = "<<dir<<", sign = "<< sign<<", direction = "<<direction<< std::endl;
           addMonomerAtPosition(position+direction,1) ? moveCounter=100 : moveCounter++;
         }
-        if(moveCounter>99){
+        if(moveCounter==100){
           // in this case the monomer could be placed, lets connect it
-          ingredients.modifyMolecules().connect( ingredients.getMolecules().size()-2, ingredients.getMolecules().size()-1 );
+          ingredients.modifyMolecules().connect( monoID, ingredients.getMolecules().size()-1 );
         }else{
           // in this case the monomer could not be placed, we have to restart the loop
           counter++;
@@ -104,6 +103,10 @@ bool UpdaterSelfAvoidingWalk<IngredientsType>::execute(){
       if(ingredients.getMolecules().size()==nSteps){
         successfull=true;
       }
+    }
+    if( !successfull ){
+      // if system was not fully created, remove the old approach
+      ingredients.modifyMolecules().clear();
     }
   }
   
